@@ -85,12 +85,9 @@ while stop == false
     deltaW = imfilter(diff_Im, hW, 'conv');
     deltaE = imfilter(diff_Im, hE, 'conv');
  
- 
     absdeltaN = abs(deltaN);
     absdeltaW = abs(deltaW);
     [kappaN, kappaW] = kneethreshold(absdeltaN, absdeltaW); % Calculate the gradient threshold parameters
- 
- 
  
     if ConductFunction == 1
         % Use the scaled Perona-Malik conductance function
@@ -117,10 +114,7 @@ while stop == false
         cE = 0.67 * ((1 - ((deltaEgaus / kappaW) .^ 2)) .^ 2);
     end
  
- 
     diff_Im = diff_Im + lambda * (cN .* deltaN + cS .* deltaS + cW .* deltaW + cE .* deltaE); % The diffused image
- 
- 
  
     if stop_criterion == true
         tu1 = edgestrength(diff_Im, edgels);
@@ -148,12 +142,7 @@ while stop == false
             stime = Time;
         end
      
-    end
- 
- 
- 
- 
- 
+    end 
 end
 
 fprintf('%g Iterations performed.\n', stime)
