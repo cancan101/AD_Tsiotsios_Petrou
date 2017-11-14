@@ -8,16 +8,16 @@
 function gfilter = gaussianfilter(snoise)
 
 ey = 3 * snoise;
-M = snoise * sqrt(- 2 * log(ey));
+M = snoise * sqrt(-2 * log(ey));
 
 
 i = 0;
-for x = - 2 * M:M:2 * M
+for x = -2 * M:M:2 * M
     j = 0;
     i = i + 1;
-    for y = - 2 * M:M:2 * M
+    for y = -2 * M:M:2 * M
         j = j + 1;
-        gfilter(i, j) = exp(- (x ^ 2 + y ^ 2) / (2 * (snoise ^ 2)));
+        gfilter(i, j) = exp(-(x ^ 2 + y ^ 2) / (2 * (snoise ^ 2)));
     end
 end
 gfilter = gfilter / (sum(sum(gfilter)));
